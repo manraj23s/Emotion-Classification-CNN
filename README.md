@@ -1,44 +1,69 @@
-This repo contains a Python Google Colab file, as well as the PowerPoint presentation and Proposal report.
+This repo contains a Python Google Colab file, as well as the PowerPoint presentation explanation and Proposal report.
 
-Data is from the RAVDESS dataset: https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-speech-audio
+## About the Dataset
 
-About Dataset
-Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS)
-Speech audio-only files (16bit, 48kHz .wav) from the RAVDESS. Full dataset of speech and song, audio and video (24.8 GB) available from Zenodo. Construction and perceptual validation of the RAVDESS is described in our Open Access paper in PLoS ONE.
+### Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS)
 
-Check out our Kaggle Song emotion dataset.
+This dataset contains speech audio-only files from the RAVDESS collection, provided in 16-bit, 48kHz `.wav` format. The complete dataset—including speech and song, audio and video (24.8 GB)—is available from [Zenodo](https://zenodo.org/). Details about the construction and perceptual validation of the RAVDESS can be found in the [Open Access paper in PLoS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0196391).
 
-Files
+For song emotion data, check out our [Kaggle Song Emotion Dataset](https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-song-audio).
 
-This portion of the RAVDESS contains 1440 files: 60 trials per actor x 24 actors = 1440. The RAVDESS contains 24 professional actors (12 female, 12 male), vocalizing two lexically-matched statements in a neutral North American accent. Speech emotions includes calm, happy, sad, angry, fearful, surprise, and disgust expressions. Each expression is produced at two levels of emotional intensity (normal, strong), with an additional neutral expression.
+---
 
-File naming convention
+### Dataset Structure
 
-Each of the 1440 files has a unique filename. The filename consists of a 7-part numerical identifier (e.g., 03-01-06-01-02-01-12.wav). These identifiers define the stimulus characteristics:
+- **Total Files:** 1,440 audio files  
+  (`60 trials per actor × 24 actors = 1,440`)
+- **Actors:** 24 professional actors (12 female, 12 male)
+- **Statements:** Two lexically-matched statements, spoken in a neutral North American accent.
+    - "Kids are talking by the door"
+    - "Dogs are sitting by the door"
+- **Emotions:** Calm, Happy, Sad, Angry, Fearful, Surprised, Disgust, and Neutral
+    - Each (except Neutral) is expressed at two intensity levels: normal and strong
 
-Filename identifiers
+---
 
-Modality (01 = full-AV, 02 = video-only, 03 = audio-only).
+### File Naming Convention
 
-Vocal channel (01 = speech, 02 = song).
+Each file is named using a 7-part numerical identifier, e.g., `03-01-06-01-02-01-12.wav`, which encodes the following characteristics:
 
-Emotion (01 = neutral, 02 = calm, 03 = happy, 04 = sad, 05 = angry, 06 = fearful, 07 = disgust, 08 = surprised).
+| Position | Value(s) | Description |
+|----------|----------|-------------|
+| 1        | 01, 02, 03 | Modality (01 = full-AV, 02 = video-only, 03 = audio-only) |
+| 2        | 01, 02     | Vocal Channel (01 = speech, 02 = song) |
+| 3        | 01–08      | Emotion (01 = neutral, 02 = calm, 03 = happy, 04 = sad, 05 = angry, 06 = fearful, 07 = disgust, 08 = surprised) |
+| 4        | 01, 02     | Emotional Intensity (01 = normal, 02 = strong) <br> *Note: No strong intensity for 'neutral' emotion* |
+| 5        | 01, 02     | Statement (01 = "Kids are talking by the door", 02 = "Dogs are sitting by the door") |
+| 6        | 01, 02     | Repetition (01 = 1st repetition, 02 = 2nd repetition) |
+| 7        | 01–24      | Actor (01 to 24; odd = male, even = female) |
 
-Emotional intensity (01 = normal, 02 = strong). NOTE: There is no strong intensity for the 'neutral' emotion.
+**Example:**  
+`03-01-06-01-02-01-12.wav`  
+- `03` = Audio-only  
+- `01` = Speech  
+- `06` = Fearful  
+- `01` = Normal intensity  
+- `02` = Statement: "Dogs are sitting by the door"  
+- `01` = 1st repetition  
+- `12` = 12th actor (female; even number)  
 
-Statement (01 = "Kids are talking by the door", 02 = "Dogs are sitting by the door").
+---
 
-Repetition (01 = 1st repetition, 02 = 2nd repetition).
+### Summary Table
 
-Actor (01 to 24. Odd numbered actors are male, even numbered actors are female).
+| Attribute          | Values / Range                                        |
+|--------------------|------------------------------------------------------|
+| Modality           | 01 = full-AV, 02 = video-only, 03 = audio-only       |
+| Vocal channel      | 01 = speech, 02 = song                               |
+| Emotion            | 01 = neutral, 02 = calm, 03 = happy, 04 = sad, 05 = angry, 06 = fearful, 07 = disgust, 08 = surprised |
+| Emotional Intensity| 01 = normal, 02 = strong (no strong for neutral)     |
+| Statement          | 01 = "Kids are talking by the door", 02 = "Dogs are sitting by the door" |
+| Repetition         | 01 = 1st, 02 = 2nd                                   |
+| Actor              | 01–24 (odd = male, even = female)                    |
 
-Filename example: 03-01-06-01-02-01-12.wav
+---
 
-Audio-only (03)
-Speech (01)
-Fearful (06)
-Normal intensity (01)
-Statement "dogs" (02)
-1st Repetition (01)
-12th Actor (12)
-Female, as the actor ID number is even.
+**References:**
+- [RAVDESS on Zenodo](https://zenodo.org/record/1188976)
+- [PLoS ONE RAVDESS Paper](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0196391)
+- [Kaggle Song Emotion Dataset](https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-song-audio)
